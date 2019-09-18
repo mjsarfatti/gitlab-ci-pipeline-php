@@ -19,7 +19,7 @@ DEBIAN_FRONTEND=noninteractive
   dpkg-reconfigure -f noninteractive tzdata \
   && apt-get update \
   && apt-get upgrade -yqq \
-  &&  DEBIAN_FRONTEND=noninteractive apt-get install -yqq \
+  && DEBIAN_FRONTEND=noninteractive apt-get install -yqq \
       apt-transport-https \
       apt-utils \
       ca-certificates \
@@ -33,9 +33,16 @@ DEBIAN_FRONTEND=noninteractive
       openssh-client \
       python \
       python-dev \
+      python-pip \
+      ca-certificates \
       rsync \
       sudo \
       unzip \
       zip \
       zlib1g-dev \
+  && pip install --upgrade pip \
+      awsebcli \
+      awscli \
+  && curl -L https://github.com/barnybug/cli53/releases/download/0.8.12/cli53-linux-386 > /usr/bin/cli53 && \
+      chmod +x /usr/bin/cli53
       && rm -rf /var/lib/apt/lists/*
